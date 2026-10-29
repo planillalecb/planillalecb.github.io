@@ -10,9 +10,7 @@ Versión web de la [aplicación Android Planilla](https://github.com/jtoledo1974
 
 La app calcula automáticamente el turno de mañana, tarde o mañana siguiente según la hora actual, igual que la aplicación Android. Un turno activo se recupera al volver a abrir la página y se elimina al terminar.
 
-En **Preferencias** puedes configurar el preaviso de Ejecutivo y Ayudante, el sonido y la vibración. Se mantienen las reglas de avisos de la aplicación original, incluida la retirada de tarjeta tras un tramo de Ayudante. La pantalla de alarma se cierra automáticamente a los 20 segundos o con **Descartar alarma**.
-
-**Límite del navegador:** las alarmas web pueden funcionar mientras la página está abierta, pero no tienen la misma garantía que el servicio y el despertador nativos de Android cuando está cerrada o el sistema suspende la web. GitHub Pages puede alojar la interfaz y los horarios, pero no un servicio de alarmas en segundo plano.
+Esta versión muestra el horario y la posición de la hora actual. No genera avisos ni alarmas.
 
 ## Probar en local
 
