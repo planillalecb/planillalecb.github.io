@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#d8c5a6">
+  <meta name="description" content="Planilla de turnos TMA LECB">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Planilla · TMA</title>
+</head>
+<body>
+  <div class="app">
+    <header class="app-bar">
+      <button id="backButton" class="icon-button hidden" aria-label="Volver">←</button>
+      <div class="app-title"><strong>Planilla</strong><small>TMA · LECB</small></div>
+      <button id="settingsButton" class="icon-button" aria-label="Preferencias" title="Preferencias">⚙</button>
+    </header>
+
+    <main>
+      <section id="homeScreen" class="screen">
+        <div class="intro"><h1>Escoge tu número de planilla</h1><p>Selecciona el tipo de planilla y después tu número.</p></div>
+        <div id="templateTabs" class="template-tabs" role="tablist" aria-label="Tipo de planilla"></div>
+        <div class="selection-panel"><h2 id="templateTitle"></h2><p id="templateHint"></p><div id="numberButtons" class="number-grid"></div></div>
+      </section>
+
+      <section id="sectorsScreen" class="screen hidden">
+        <div class="intro"><p class="step-label">SECTORES TMA</p><h1 id="sectorTitle">Escoge tu sector</h1><p id="sectorHint"></p></div>
+        <div id="chosenSectors" class="chosen-sectors"></div>
+        <div id="sectorButtons" class="sector-grid"></div>
+      </section>
+
+      <section id="planScreen" class="screen hidden">
+        <div class="plan-heading"><div><p class="step-label" id="planType"></p><h1>Planilla <span id="planNumber"></span></h1></div><button id="cancelButton" class="text-button">Cancelar</button></div>
+        <div class="plan-instruction">Toca el horario para ver el esquema original</div>
+        <div id="scheduleChart" class="schedule-chart" role="button" tabindex="0" aria-label="Ver esquema de la planilla"><span id="nowLine" class="now-line hidden"></span></div>
+        <p id="planStatus" class="plan-status"></p>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="settingsDialog" class="settings-dialog">
+    <form method="dialog"><div class="dialog-head"><h2>Preferencias</h2><button class="icon-button" aria-label="Cerrar preferencias">×</button></div></form>
+    <div class="settings-body">
+      <label>Alarma de Ejecutivo <span>Minutos de preaviso</span><select id="executiveLead"><option value="15">15 minutos</option><option value="10">10 minutos</option><option value="5">5 minutos</option><option value="3">3 minutos</option></select></label>
+      <label>Alarma de Ayudante <span>Minutos de preaviso</span><select id="assistantLead"><option value="10">10 minutos</option><option value="5">5 minutos</option><option value="3">3 minutos</option><option value="1">1 minuto</option></select></label>
+      <label class="toggle-row">Alarma sonora <input id="soundAlarm" type="checkbox"></label>
+      <label class="toggle-row">Alarma vibratoria <input id="vibrationAlarm" type="checkbox"></label>
+      <p class="settings-note">Los avisos de esta web funcionan mientras la página está abierta. El navegador no puede garantizar las alarmas con la aplicación cerrada como Android.</p>
+    </div>
+  </dialog>
+
+  <dialog id="imageDialog" class="image-dialog"><div class="image-bar"><strong>Esquema de la planilla</strong><button id="closeImage" class="icon-button" aria-label="Cerrar esquema">×</button></div><div class="image-frame"><img id="planImage" alt="Esquema original de la planilla"><span id="imageNowLine" class="image-now-line hidden"></span></div></dialog>
+
+  <dialog id="alarmDialog" class="alarm-dialog"><div class="alarm-symbol">!</div><p>ALARMA DE RELEVO</p><h2 id="alarmText"></h2><div id="alarmCountdown"></div><button id="dismissAlarm" class="dismiss-button">Descartar alarma</button></dialog>
+
+  <script src="./data.js" defer></script>
+  <script src="./app.js" defer></script>
+</body>
+</html>
